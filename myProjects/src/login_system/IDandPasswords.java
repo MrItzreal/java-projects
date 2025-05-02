@@ -7,9 +7,9 @@ public class IDandPasswords {
 
   // Constructor:
   IDandPasswords() {
-    logininfo.put("Bro", "pizza");
-    logininfo.put("Brometheus", "PASSWORD");
-    logininfo.put("BroCode", "abc123");
+    logininfo.put("Izzy", "pizza");
+    logininfo.put("Pokemon", "PASSWORD");
+    logininfo.put("JavaCode", "abc123");
   }
 
   /*
