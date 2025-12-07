@@ -23,6 +23,7 @@ public class BankMain {
       System.out.println("1. Savings Account");
       System.out.println("2. Checking Account");
       System.out.println("3. Exit");
+      System.out.println("***************");
 
       System.out.print("Enter your choice (1-3): ");
       accountType = scanner.nextInt();
@@ -73,6 +74,7 @@ public class BankMain {
           System.out.println("2. Deposit");
           System.out.println("3. Withdraw");
           System.out.println("4. Exit");
+          System.out.println("***************");
 
           System.out.print("Enter your choice (1-4): ");
           choice = scanner.nextInt();
