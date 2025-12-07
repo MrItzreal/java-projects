@@ -6,8 +6,10 @@ public class BankMain {
   static Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {
-    double amount;
     boolean isRunning = true;
+    boolean inAccountMenu = true;
+    double amount;
+    int accountType;
     int choice;
 
     // Setting Accounts
@@ -15,55 +17,84 @@ public class BankMain {
     SavingsAccount savings = new SavingsAccount(456, "Dennis Garcia", 15000.00);
 
     while (isRunning) {
-      // DISPLAY MENU
       System.out.println("***************");
       System.out.println("WELCOME TO DSD BANKING");
-      System.out.println("****CHECKING-ACCOUNT****");
-      System.out.println("1. Show Balance");
-      System.out.println("2. Deposit");
-      System.out.println("3. Withdraw");
-      System.out.println("4. Exit");
-      System.out.println("***************");
-      System.out.println("****SAVINGS-ACCOUNT****");
-      System.out.println("5. Show Balance");
-      System.out.println("6. Deposit");
-      System.out.println("7. Withdraw");
-      System.out.println("8. Exit");
-      System.out.println("***************");
+      System.out.println("****SELECT ACCOUNT TYPE****");
+      System.out.println("1. Savings Account");
+      System.out.println("2. Checking Account");
+      System.out.println("3. Exit");
 
-      System.out.print("Enter your choice (1-8): ");
-      choice = scanner.nextInt();
+      System.out.print("Enter your choice (1-3): ");
+      accountType = scanner.nextInt();
 
-      // GET AND PROCESS USERS CHOICE
-      switch (choice) {
-        // CHECKING ACCOUNT
-        case 1 -> checking.showBalance();
-        case 2 -> {
-          System.out.print("Enter amount to deposit: ");
-          amount = scanner.nextDouble();
-          checking.deposit(amount);
-        }
-        case 3 -> {
-          System.out.print("Enter amount to withdraw: ");
-          amount = scanner.nextDouble();
-          checking.withdraw(amount);
-        }
-        case 4 -> isRunning = false;
+      if (accountType == 1) {
 
-        // SAVINGS ACCOUNT
-        case 5 -> savings.showBalance();
-        case 6 -> {
-          System.out.print("Enter amount to deposit: ");
-          amount = scanner.nextDouble();
-          savings.deposit(amount);
+        inAccountMenu = true;
+
+        while (inAccountMenu) {
+          System.out.println("***************");
+          System.out.println("****SAVINGS-ACCOUNT****");
+          System.out.println("1. Show Balance");
+          System.out.println("2. Deposit");
+          System.out.println("3. Withdraw");
+          System.out.println("4. Exit");
+          System.out.println("***************");
+
+          System.out.print("Enter your choice (1-4): ");
+          choice = scanner.nextInt();
+
+          switch (choice) {
+            // SAVINGS ACCOUNT
+            case 1 -> savings.showBalance();
+            case 2 -> {
+              System.out.print("Enter amount to deposit: ");
+              amount = scanner.nextDouble();
+              savings.deposit(amount);
+            }
+            case 3 -> {
+              System.out.print("Enter amount to withdraw: ");
+              amount = scanner.nextDouble();
+              savings.withdraw(amount);
+            }
+            case 4 -> inAccountMenu = false;
+            default -> System.out.println("INVALID CHOICE");
+
+          }
         }
-        case 7 -> {
-          System.out.print("Enter amount to withdraw: ");
-          amount = scanner.nextDouble();
-          savings.withdraw(amount);
+
+      } else if (accountType == 2) {
+
+        inAccountMenu = true;
+
+        while (inAccountMenu) {
+          System.out.println("***************");
+          System.out.println("****CHECKING-ACCOUNT****");
+          System.out.println("1. Show Balance");
+          System.out.println("2. Deposit");
+          System.out.println("3. Withdraw");
+          System.out.println("4. Exit");
+
+          System.out.print("Enter your choice (1-4): ");
+          choice = scanner.nextInt();
+
+          switch (choice) {
+            case 1 -> checking.showBalance();
+            case 2 -> {
+              System.out.print("Enter amount to deposit: ");
+              amount = scanner.nextDouble();
+              checking.deposit(amount);
+            }
+            case 3 -> {
+              System.out.print("Enter amount to withdraw: ");
+              amount = scanner.nextDouble();
+              checking.withdraw(amount);
+            }
+            case 4 -> inAccountMenu = false;
+            default -> System.out.println("INVALID CHOICE");
+          }
         }
-        case 8 -> isRunning = false;
-        default -> System.out.println("INVALID CHOICE");
+      } else {
+        isRunning = false;
       }
     }
     System.out.println("***************");
@@ -72,5 +103,4 @@ public class BankMain {
 
     scanner.close();
   }
-
 }
